@@ -8,7 +8,6 @@ pipeline {
     }
     stage('Compile blueprint') {
       steps {
-        unstash 'scm'
         script{
           docker.image('ntnx/calm-dsl').inside{
             'calm'
