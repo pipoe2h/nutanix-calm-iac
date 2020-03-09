@@ -6,9 +6,14 @@ pipeline {
         checkout scm
       }
     }
-    stage('Build') {
+    stage('Compile blueprint') {
       steps {
-        echo 'Test'
+        unstash 'scm'
+        script{
+          docker.image('ntnx/calm-dsl').inside{
+            'calm'
+          }
+        }
       }
     }
 
